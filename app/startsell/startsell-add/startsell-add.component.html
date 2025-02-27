@@ -1,0 +1,99 @@
+
+
+<div class="row container-fluid bg-gradient-faded-light-vertical p-2 mt-2 ">
+    <h6 class="text-bg-light">Customer And Order Details</h6>
+<hr class="bg-primary">
+    <div class="row  ">
+        <div class="col-md-6">
+            <h6 class="bold">Order Id : {{orderId}}</h6>
+
+        </div>
+        <div class="col-md-6">
+            <h6 class="bold">Order Date : {{dt | date:'dd/MMM/yyyy'}}</h6>
+
+        </div>
+        <div class="col-md-6">
+            <h6 class="bold">Customer Name : {{customerName}}</h6>
+
+        </div>
+        <div class="col-md-6">
+            <h6 class="bold">Mobile No : {{mobileNo}}</h6>
+
+        </div>
+
+    </div>
+    <hr class="bg-primary">
+
+</div>
+
+<div class="row container-fluid bg-gradient-faded-light p-2 mt-2 ">
+    <h6>Add Items</h6>
+    <div class="col-md-4">
+        <label>Select Type</label>
+        <ng-select [items]="productList" bindLabel="name" [virtualScroll]="true" bindValue="id"
+            class="form-control" appendTo="body" (ngModelChange)="onTypeChange($event)"
+            [(ngModel)]="product">
+        </ng-select>
+    </div>
+    <div class="col-md-4 ">
+        <div class="group">
+            <label>Qty</label>
+            <input type="text" maxlength="3" class="form-control" [(ngModel)]="qty">
+
+        </div>
+       
+    </div>
+    <div class="col-md-4">
+        <div class="col-md-3 mt-3">
+            <button class="btn btn-primary mt-2" (click)="addProduct()" type="submit"
+                [disabled]="this.product == null || this.qty == 0">Add Product</button>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="row container-fluid p-2 mt-2 ">
+    <h6>Total :{{totalAmt}}</h6>
+    <table class="table table-striped table-hover">
+        <thead class="bg-black text-white">
+            <th>Sr No</th>
+            <!-- <th>Product Id</th> -->
+            <th>Code</th>
+            <th>Name</th>
+            <th>Rate</th>
+            <th>Qty</th>
+            <th>Total</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+      
+            <tr *ngFor="let item of productCart; let i = index " >
+                <td>{{i + 1}}</td>
+                <!-- <td >{{item.productId}}</td> -->
+                <td>{{item.code}}</td>
+                <td>{{item.nm}}</td>
+                <td>{{item.rate}}</td>
+                <td>{{item.qty}}</td>
+                <td>{{item.total}}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="delete(i)"><i class="fa fa-trash"></i></button>
+                        <button (click)="edit(item,i)"><i class="fa fa-pencil-square"></i></button>
+                    </div>
+                   
+                </td>
+
+            </tr>
+          
+        </tbody>
+   
+      </table>
+
+
+</div>
+<div class="row">
+    <div class="col-md-3 ml-auto mt-3">
+        <button class="btn btn-primary mt-2" (click)="saveOrder()" type="submit">Save Order</button>
+    </div>
+</div>

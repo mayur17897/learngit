@@ -1,0 +1,88 @@
+<div class="container bg-white  p-3">
+
+    <div class="contaner bg-gradient-light p-2">
+        <div class="row">
+            <div class="col-md-3">
+                <label></label>
+                <h6>
+                    Enter Customer Name And Mobile No
+                </h6>
+            </div>
+
+            <div class="col-md-3">
+                <div class="group">
+                    <label>Select Type</label>
+                    <ng-select [items]="type" bindLabel="name" [virtualScroll]="true" bindValue="id"
+                        class="form-control" appendTo="body" (ngModelChange)="onTypeChange($event)"
+                        [(ngModel)]="custType">
+                    </ng-select>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <form [formGroup]="_frmGroup">
+
+        <div *ngIf="isNew==true" class="row mt-2">
+
+
+
+
+            <div class="col-md-3 mb-3">
+                <div class="group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" formControlName="nm">
+
+                </div>
+                <div class="text-danger" *ngIf="f['nm'].invalid && (f['nm'].dirty || f['nm'].touched )">
+                    <div *ngIf="f['nm'].errors!['required']">
+                        Name is required.
+                    </div>
+                    <div *ngIf="f['nm'].errors!['maxlength']">
+                        Name must be 20 character long
+                    </div>
+                    <div *ngIf="f['nm'].errors!['minlength']">
+                        Name must be 2 character long
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="group">
+                    <label>Mobile No</label>
+                    <input type="text" maxlength="10" class="form-control" formControlName="mobileNo">
+
+                </div>
+                <div class="text-danger"
+                    *ngIf="f['mobileNo'].invalid && (f['mobileNo'].dirty || f['mobileNo'].touched )">
+                    <div *ngIf="f['mobileNo'].errors!['required']">
+                        Mobile No is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mt-3">
+                <button class="btn btn-primary mt-2" (click)="SaveCustomer()" type="submit"
+                    [disabled]="_frmGroup.invalid">Continue</button>
+            </div>
+        </div>
+    </form>
+
+    <div *ngIf="isNew==false" class="row ">
+        <div class="col-md-6">
+
+            <div class="group">
+                <label>Select Cutomer</label>
+                <ng-select [items]="customerList" bindLabel="name" [virtualScroll]="true" bindValue="id"
+                    class="form-control" appendTo="body" (ngModelChange)="onDataTranferSell($event)" [(ngModel)]="type">
+                </ng-select>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+<!-- <app-startsell-add ></app-startsell-add> -->

@@ -1,0 +1,45 @@
+<div class="content  w-40   shadow p-3 mb-5 bg-body rounded  " *ngIf="!IsLoggedIn">
+  <img src="../../assets/cakelogo.jpg" class="logo rounded mx-auto d-block align-items-lg-center" id="icon"
+    alt="Logo" />
+
+  <form [formGroup]="_loginForm" (ngSubmit)="login()">
+
+
+    <div class="row mb-3">
+      <div class="group">
+        <input type="text" class="form-control" formControlName="unm">
+        <label>UserName</label>
+      </div>
+      <div class="text-danger" *ngIf="f['unm'].invalid && (f['unm'].dirty || f['unm'].touched )">
+        <div *ngIf="f['unm'].errors!['required']">
+          Username is required.
+        </div>
+        <div *ngIf="f['unm'].errors!['maxlength']">
+          UserName must be 5 character long
+        </div>
+        <div *ngIf="f['unm'].errors!['minlength']">
+          UserName must be 2 character long
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="group">
+        <input type="password" class="form-control" formControlName="pwd">
+        <label>Password</label>
+      </div>
+      <div class="text-danger" *ngIf="f['pwd'].invalid && (f['pwd'].dirty || f['pwd'].touched )">
+        <div *ngIf="f['pwd'].errors!['required']">
+          Password is required.
+        </div>
+      </div>
+    </div>
+    <div class="d-grid col-6 mx-auto ">
+      <button class="btn btn-primary mt-2" type="submit" [disabled]="_loginForm.invalid">Login</button>
+    </div>
+  </form>
+
+</div>
+
+
+<router-outlet *ngIf="IsLoggedIn"></router-outlet>

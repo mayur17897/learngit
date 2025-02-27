@@ -1,0 +1,30 @@
+
+
+<div class="content  w-350   shadow p-3 mb-5 bg-body rounded  " >
+  <div class="card-body px-3 pb-2">
+
+    <h4>Product</h4>
+
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+          <li [ngbNavItem]="1">
+              <button ngbNavLink>ADD</button>
+              <ng-template ngbNavContent>
+              <div class="p-4">
+                <app-add-product />
+              </div>
+              </ng-template>
+          </li>
+      
+          <li [ngbNavItem]="2">
+              <button ngbNavLink>DETAILS</button>
+              <ng-template ngbNavContent>
+                   <app-detail-product />
+              </ng-template>
+          </li>
+          
+      </ul>
+      
+      <div [ngbNavOutlet]="nav" class="mt-2"></div>
+      </div>
+    </div>
+     

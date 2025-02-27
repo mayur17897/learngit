@@ -1,0 +1,140 @@
+<form [formGroup]="_frmGroup">
+
+  <div class="row ">
+
+    <div class="col-md-6 mb-3">
+      <label>Select Product Type</label>
+      <select formControlName="companyId" class="form-control">
+        <option></option>
+      </select>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="group">
+        <label>Product Code</label>
+        <input type="text" class="form-control" formControlName="code">
+
+      </div>
+      <div class="text-danger" *ngIf="f['code'].invalid && (f['code'].dirty || f['code'].touched )">
+        <div *ngIf="f['code'].errors!['required']">
+          Code is required.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ">
+
+    <div class="col-md-6 mb-3">
+      <div class="group">
+        <label>Product Name</label>
+        <input type="text" class="form-control" formControlName="nm">
+
+      </div>
+      <div class="text-danger" *ngIf="f['nm'].invalid && (f['nm'].dirty || f['nm'].touched )">
+        <div *ngIf="f['nm'].errors!['required']">
+          Name is required.
+        </div>
+        <div *ngIf="f['nm'].errors!['maxlength']">
+          Name must be 20 character long
+        </div>
+        <div *ngIf="f['nm'].errors!['minlength']">
+          Name must be 2 character long
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="group">
+        <label>Total Stock</label>
+        <input type="text" class="form-control" formControlName="stock">
+
+      </div>
+      <div class="text-danger" *ngIf="f['stock'].invalid && (f['stock'].dirty || f['stock'].touched )">
+        <div *ngIf="f['stock'].errors!['required']">
+          Stock is required.
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label>Company</label>
+      <select formControlName="categoryId" class="form-control">
+        <option></option>
+      </select>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="group">
+        <label>Cost Per Item</label>
+        <input type="text" class="form-control" formControlName="rt">
+
+      </div>
+      <div class="text-danger" *ngIf="f['rt'].invalid && (f['rt'].dirty || f['rt'].touched )">
+        <div *ngIf="f['rt'].errors!['required']">
+          Cost Per Item is required.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="row ">
+    <div class="col-md-6 mb-3">
+      <div class="group">
+        <label>Manufacturing Date</label>
+        <input type="date" class="form-control" formControlName="m_date">
+
+      </div>
+      <div class="text-danger" *ngIf="f['m_date'].invalid && (f['m_date'].dirty || f['m_date'].touched )">
+        <div *ngIf="f['m_date'].errors!['required']">
+          Manufacturing is required.
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-6 mb-3">
+      <div class="group">
+        <label>Expiry Date</label>
+        <input type="date" class="form-control" required="required" formControlName="e_date">
+
+      </div>
+      <div class="text-danger" *ngIf="f['e_date'].invalid && (f['e_date'].dirty || f['e_date'].touched )">
+        <div *ngIf="f['e_date'].errors!['required']">
+          Expiry Date is required.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <div class="group">
+        <label>Description</label>
+        <input type="text" class="form-control" formControlName="description">
+
+      </div>
+      <div class="text-danger"
+        *ngIf="f['description'].invalid && (f['description'].dirty || f['description'].touched )">
+        <div *ngIf="f['description'].errors!['required']">
+          Manufacturing is required.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="d-grid  d-md-flex justify-content-md-end   ">
+      <button class="btn btn-primary mt-2" type="submit" [disabled]="_frmGroup.invalid">Save</button>
+    </div>
+  </div>
+</form>
