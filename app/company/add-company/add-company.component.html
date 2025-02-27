@@ -1,29 +1,25 @@
 <form [formGroup]="_frmGroup" (ngSubmit)="OnSubmit()">
-<div class="row">
+  <div class="row">
     <div class="col-md-6 mb-3">
-        <div class="group">
-          <label>Name</label>
-          <input type="text" class="form-control" formControlName="nm">
-  
+      <div class="group">
+        <label>Name</label>
+        <input type="text" class="form-control" formControlName="nm">
+
+      </div>
+      <div class="text-danger" *ngIf="f['nm'].invalid && (f['nm'].dirty || f['nm'].touched )">
+        <div *ngIf="f['nm'].errors!['required']">
+          Name is required.
         </div>
-        <div class="text-danger" *ngIf="f['nm'].invalid && (f['nm'].dirty || f['nm'].touched )">
-          <div *ngIf="f['nm'].errors!['required']">
-            Name is required.
-          </div>
-          <div *ngIf="f['nm'].errors!['maxlength']">
-            Name must be 20 character long
-          </div>
-          <div *ngIf="f['nm'].errors!['minlength']">
-            Name must be 2 character long
-          </div>
+        <div *ngIf="f['nm'].errors!['maxlength']">
+          Name must be 20 character long
+        </div>
+        <div *ngIf="f['nm'].errors!['minlength']">
+          Name must be 2 character long
         </div>
       </div>
-</div>
-
-
-
-
-<div class="row">
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-12 mb-3">
       <div class="group">
         <label>Description</label>
@@ -38,12 +34,9 @@
       </div>
     </div>
   </div>
-
-
   <div class="d-grid col-6 mx-auto ">
-    <button class="btn btn-primary mt-2" type="submit" 
-      [disabled]="_frmGroup.invalid">Save</button>
+    <button class="btn btn-primary mt-2" type="submit" [disabled]="_frmGroup.invalid">Save</button>
   </div>
 
-
+<h6>test</h6>
 </form>
