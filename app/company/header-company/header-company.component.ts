@@ -11,4 +11,5 @@ import { AddCompanyComponent } from '../add-company/add-company.component';
 })
 export class HeaderCompanyComponent {
 active = 1
+header="Company"
 }
